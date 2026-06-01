@@ -124,6 +124,7 @@ main {
 
 .load-more {
   display: block;
+  visibility: hidden;
   margin: 0 auto 32px;
   padding: 8px 16px;
   width: 125px;

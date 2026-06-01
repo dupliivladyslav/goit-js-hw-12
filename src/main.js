@@ -25,7 +25,7 @@ form.addEventListener('submit', async e => {
   currentPage = 1;
 
   clearGallery();
-  loadMoreBtn.hidden = true;
+  loadMoreBtn.style.visibility = 'hidden';
   showLoader();
 
   try {
@@ -45,9 +45,9 @@ form.addEventListener('submit', async e => {
 
     const loaded = currentPage * 15;
     if (loaded < totalHits) {
-      loadMoreBtn.hidden = false;
+      loadMoreBtn.style.visibility = 'visible';
     } else {
-      loadMoreBtn.hidden = true;
+      loadMoreBtn.style.visibility = 'hidden';
       iziToast.info({
         message: "We're sorry, but you've reached the end of search results.",
         position: 'topRight',
@@ -65,7 +65,7 @@ form.addEventListener('submit', async e => {
 
 loadMoreBtn.addEventListener('click', async () => {
   currentPage += 1;
-  loadMoreBtn.hidden = true;
+  loadMoreBtn.style.visibility = 'hidden';
   showLoader();
 
   try {
@@ -73,7 +73,6 @@ loadMoreBtn.addEventListener('click', async () => {
 
     createGallery(data.hits);
 
-    // Smooth scroll by 2 card heights
     const card = document.querySelector('.gallery a');
     if (card) {
       const { height } = card.getBoundingClientRect();
@@ -82,9 +81,9 @@ loadMoreBtn.addEventListener('click', async () => {
 
     const loaded = currentPage * 15;
     if (loaded < totalHits) {
-      loadMoreBtn.hidden = false;
+      loadMoreBtn.style.visibility = 'visible';
     } else {
-      loadMoreBtn.hidden = true;
+      loadMoreBtn.style.visibility = 'hidden';
       iziToast.info({
         message: "We're sorry, but you've reached the end of search results.",
         position: 'topRight',
