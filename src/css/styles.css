@@ -82,12 +82,12 @@ main {
   display: block;
 }
 
-/* Gallery */
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   list-style: none;
+  margin-bottom: 32px;
 }
 
 .gallery a {
@@ -127,4 +127,24 @@ main {
   font-weight: 500;
   color: #808080;
   text-transform: uppercase;
+}
+
+.load-more {
+  display: block;
+  margin: 0 auto 32px;
+  padding: 8px 16px;
+  width: 125px;
+  height: 40px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  background: #4e75ff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.load-more:hover {
+  background: #6c8cff;
 }
