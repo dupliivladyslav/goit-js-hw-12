@@ -6,6 +6,8 @@ import {
   clearGallery,
   showLoader,
   hideLoader,
+  showLoadMoreBtn,
+  hideLoadMoreBtn,
 } from './js/render-functions.js';
 
 const form = document.querySelector('.form');
@@ -25,7 +27,7 @@ form.addEventListener('submit', async e => {
   currentPage = 1;
 
   clearGallery();
-  loadMoreBtn.style.visibility = 'hidden';
+  hideLoadMoreBtn();
   showLoader();
 
   try {
@@ -43,11 +45,10 @@ form.addEventListener('submit', async e => {
 
     createGallery(data.hits);
 
-    const loaded = currentPage * 15;
-    if (loaded < totalHits) {
-      loadMoreBtn.style.visibility = 'visible';
+    if (currentPage * 15 < totalHits) {
+      showLoadMoreBtn();
     } else {
-      loadMoreBtn.style.visibility = 'hidden';
+      hideLoadMoreBtn();
       iziToast.info({
         message: "We're sorry, but you've reached the end of search results.",
         position: 'topRight',
@@ -65,7 +66,7 @@ form.addEventListener('submit', async e => {
 
 loadMoreBtn.addEventListener('click', async () => {
   currentPage += 1;
-  loadMoreBtn.style.visibility = 'hidden';
+  hideLoadMoreBtn();
   showLoader();
 
   try {
@@ -79,11 +80,10 @@ loadMoreBtn.addEventListener('click', async () => {
       window.scrollBy({ top: height * 2, behavior: 'smooth' });
     }
 
-    const loaded = currentPage * 15;
-    if (loaded < totalHits) {
-      loadMoreBtn.style.visibility = 'visible';
+    if (currentPage * 15 < totalHits) {
+      showLoadMoreBtn();
     } else {
-      loadMoreBtn.style.visibility = 'hidden';
+      hideLoadMoreBtn();
       iziToast.info({
         message: "We're sorry, but you've reached the end of search results.",
         position: 'topRight',
